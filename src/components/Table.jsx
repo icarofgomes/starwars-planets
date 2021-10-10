@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
-import { Films } from '.'
+// import { Films } from '.'
 
-const headers = ['name', 'films', 'climate', 'created', 'diameter', 'edited', 'gravity',
+const headers = ['name', 'films', 'climate', 'diameter', 'gravity',
   'orbital_period', 'population', 'rotation_period', 'surface_water',
-  'terrain', 'url'];
+  'terrain'];
 
 const filterPlanets = (data, filter) => {
   const { filterByName: name, filterByNumerics, order } = filter;
@@ -64,66 +64,64 @@ function Table() {
       switch(field) {
         case 'name':
           return (
-            <div
-              className="w-1/2 mx-auto font-bold text-xl text-yellow-600 p-2"
+            <td
+              className="w-1/2 mx-auto font-bold text-xl text-yellow-600 p-2
+                md:text-xs md:my-auto md:p-1 md:w-1/12"
               key={ index }
               data-testid="planet-name"
             >
               { planet[field] }
-            </div>
+            </td>
           );
         case 'films':
           return (
-            <div
-              className="flex flex-col mx-auto w-1/2 border-1 border-black
-                border-solid shadow-md mb-1"
+            <td
+              className="flex flex-col mx-auto w-1/2 border-1 border-black border-solid shadow-md
+                mb-1 md:shadow-none md:w-1/12 md:table-cell"
+              key={ index }
             >
-              <div className="font-bold text-yellow-600 text-base">Films</div>
-              <div className="" key={ index }>
+              <div className="font-bold text-yellow-600 text-base md:hidden">Films</div>
+              <div className="md:flex md:flex-col">
                 {
-                  planet[field].map((film, i) => <div key={ i }><Films film={film}/></div>)
+                  planet[field].map((film, i) => <div key={ i }>A New Hope</div>)
                 }
               </div>
-            </div>
+            </td>
           );
-        case 'created':
-        case 'edited':
-        case 'url':
-          return <div className="hidden mx-2 md:block" key={ index }>{ planet[field] }</div>;
         default:
           return (
-            <div className="w-1/2 flex mx-auto p-1">
+            <td
+              className="w-1/2 flex mx-auto p-1 md:table-cell md:w-32"
+              key={ index }
+            >
               <div className="font-bold md:hidden">{`${field}:`}</div>
-              <div className="" key={ index }>
+              <div className="mx-auto">
                 { planet[field] }
               </div>
-            </div>
+            </td>
           );
       }
     })
   }
   
   return (
-    <div className="">
       <table className="table-auto text-xs text-center">
-        <thead className="hidden">
-          <tr>
-            {headers.map((field, index) => <th key={ index }>{ field }</th>)}
+        <thead className="hidden md:table-header-group md:bg-yellow-400 md:h-12">
+          <tr className="justify-around font-bold text-lg">
+            {headers.map((field, index) => <td key={ index }>{ field }</td>)}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="">
           { planets.map((planet, i) => (
-            <div
-              className={i % 2 === 0 ? 'bg-gray-200' : 'bg-yellow-100'}
+            <tr
+              className={`${i % 2 === 0 ? 'bg-gray-200' : 'bg-yellow-100'} flex flex-col
+                md:table-row`}
               key={ planet.name }
             >
-              <div className="flex flex-col w-screen">
-                { createRow(planet) }
-              </div>
-            </div>))}
+              { createRow(planet) }
+            </tr>))}
         </tbody>
       </table>
-    </div>
   );
 }
 
