@@ -91,11 +91,11 @@ function Table() {
         default:
           return (
             <td
-              className="w-1/2 flex mx-auto p-1 md:table-cell md:w-32"
+              className="w-2/3 mx-auto flex justify-between md:table-cell md:w-32"
               key={ index }
             >
               <div className="font-bold md:hidden">{`${field}:`}</div>
-              <div className="mx-auto">
+              <div className="">
                 { planet[field] }
               </div>
             </td>

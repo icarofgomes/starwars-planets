@@ -45,22 +45,34 @@ function Filter() {
   const createFilterArea = () => {
     if (filters.length < FIVE) {
       return (
-        <div>
-          {
-            filter.filterByNumerics.map(({ column, comparison, value }, index) => (
-              <div key={ index } data-testid="filter">
-                {
-                  `${column} ${comparison} ${value}`
-                }
-                <button
-                  type="button"
-                  onClick={ () => handleDelete(column) }
+        <div className="p-1">
+          <hr/>
+          <div>
+            Filtros:
+          </div>
+          <div className="flex">
+            {
+              filter.filterByNumerics.map(({ column, comparison, value }, index) => (
+                <div
+                  className="flex items-center"
+                  key={ index }
+                  data-testid="filter"
                 >
-                  X
-                </button>
-              </div>
-            ))
-          }
+                  {
+                    `${column} ${comparison} ${value}`
+                  }
+                  <button
+                    className="mx-2 bg-yellow-400 text-black h-5 w-5 flex items-center
+                      justify-center font-bold rounded"
+                    type="button"
+                    onClick={ () => handleDelete(column) }
+                  >
+                    X
+                  </button>
+                </div>
+              ))
+            }
+          </div>
         </div>
       );
     }
