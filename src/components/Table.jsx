@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
-// import { Films } from '.'
+import { Films } from '.'
 
 const headers = ['name', 'films', 'climate', 'diameter', 'gravity',
   'orbital_period', 'population', 'rotation_period', 'surface_water',
@@ -83,7 +83,7 @@ function Table() {
               <div className="font-bold text-yellow-600 text-base md:hidden">Films</div>
               <div className="md:flex md:flex-col">
                 {
-                  planet[field].map((film, i) => <div key={ i }>A New Hope</div>)
+                  planet[field].map((film, i) => <div key={ i }><Films film={ film }/></div>)
                 }
               </div>
             </td>
