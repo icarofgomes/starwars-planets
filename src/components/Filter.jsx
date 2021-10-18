@@ -30,6 +30,14 @@ function Filter() {
     }
   }, [filter]);
 
+  useEffect(() => {
+    setLocalFilter({
+      column: filters[0],
+      comparison: 'maior que',
+      value: '',
+    })
+  },[filters]);
+
   const updateFilter = ({ target: { name, value } }) => {
     setLocalFilter({
       ...localFilter,
@@ -103,6 +111,7 @@ function Filter() {
                 id="column-filter"
                 name="column"
                 data-testid="column-filter"
+                value={ localFilter.column }
                 onChange={ updateFilter }
               >
                 {
@@ -121,6 +130,7 @@ function Filter() {
                 id="comparison-filter"
                 name="comparison"
                 data-testid="comparison-filter"
+                value={ localFilter.comparison }
                 onChange={ updateFilter }
               >
                 {
@@ -142,6 +152,7 @@ function Filter() {
                 name="value"
                 id="value-filter"
                 data-testid="value-filter"
+                value={ localFilter.value }
                 onChange={ updateFilter }
               />
             </label>
