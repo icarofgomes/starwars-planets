@@ -6,7 +6,7 @@ function Intro() {
   const [intro, setIntro] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIntro(false), 50000)
+    setTimeout(() => setIntro(false), window.screen.width > 680 ? 50000 : 53000)
   }, [])
 
   const handleClick = () => {
