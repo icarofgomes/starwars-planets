@@ -6,14 +6,14 @@ function Intro() {
   const [intro, setIntro] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIntro(false), window.screen.width > 680 ? 50000 : 53000)
+    setTimeout(() => setIntro(false), window.screen.width > 680 ? 50000 : 60000)
   }, [])
 
   const handleClick = () => {
     setIntro(false);
   }
 
-  if (!intro) return <Redirect to="/starwars-planets/main" />;
+  // if (!intro) return <Redirect to="/starwars-planets/main" />;
 
   return (
     <div className="intro">
