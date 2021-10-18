@@ -13,7 +13,7 @@ function Intro() {
     setIntro(false);
   }
 
-  // if (!intro) return <Redirect to="/starwars-planets/main" />;
+  if (!intro) return <Redirect to="/starwars-planets/main" />;
 
   return (
     <div className="intro">
